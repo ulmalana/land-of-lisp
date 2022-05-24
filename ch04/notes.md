@@ -50,3 +50,37 @@
                          ((henry) 'this-is-henry)
                          ((johnny) 'this-is-johnny)
                          (otherwise 'this-is-stranger))`
+## AND and OR
+### **Shortcut Boolean Evaluation**:
+* OR: **return T immediately**  when the **first element is T**
+* AND: **return NIL immediatly** when the **first element is NIL**
+
+## Returning more than the Truth
+Some functions return not only the truth value, but also ordinari values.
+Example: `(if (member 1 '(3 4 1 5))
+                'one-in-list
+                'one-not-in-list)`
+
+          -> returns `'ONE-IN-LIST`
+
+          `(member 1 '(3 4 1 5))`
+
+          -> returns `(1 5)`
+          **to distinguish between empty list (false) as return value and
+          non-empty list (true) as return value**
+
+## Comparing stuff
+There are too many ways to compare stuff in Lisp.
+
+### Rule of thumb for comparation
+* **Use `EQ` to compare symbols** (`EQ` is simple and fast)
+    * example: `(eq 'apple 'apple)`
+* **Use `EQUAL` for everything else**
+    * example: `(equal (list 1 2 3) (list 1 2 3)`, `(equal 5 5)`, `(equal "bar" "bar")`
+
+### Other comparation functions
+* `EQL`: simple like `EQ`, but **can handle numbers and characters**.
+    * example: `(eql 4.5 4.5)`, `()`
+* `EQUALP`: same as `EQUAL`, but **can handle difficult comparison**.
+    * example: `(equalp "riz" "RiZ")` -> `T`, `(equalp 0 0.0)` -> `T`
+* The remaining comparison commands are just specialization for specific datatypes.
